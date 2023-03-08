@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta property="og:image" content="https://effortlogger.com/bw.png" />
-<meta property="og:title" content="Gain wisdom" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://effortlogger.com/wisdom.html" />
-<meta name="twitter:card" content="summary_large_image">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://effortlogger.com/bw.png" />
+    <meta property="og:title" content="Gain wisdom" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://effortlogger.com/wisdom.html" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	    <p>This website is NOT affiliated with ASU or Lynn Robert Carter</p>
+<p>This website is NOT affiliated with ASU or Lynn Robert Carter</p>
 <h1>Gain Wisdom</h1>
 <img src="/bw.png" width=300 height=300>
 <br>
@@ -18,55 +18,72 @@
 <p id="lore"></p>
 </body>
 <script>
-
-const lore = [
-	"Some of the sexiest movies don't show any boobs or anything else",
-	"what's you or what's the computer... it's the future",
-	"Breathe in, breathe out.  You're gonna die!",
-	"We need to understand the pots of gold out there that maybe took some time and pain how to discover and how to leverage. And we need to recognize the black holes, and lets be very clear where the event horizon is, because once you cross over that line, there be dragons.",
-	"Great technology must deliver much more than just a tactical advantage in the marketplace. Society needs strategically sustainable, secure, and useful system solutions, worthy of trust, that typically depend upon a complex ecosystem of organizations and professionals. This ecosystem must be able to ethically design, develop, deliver, operate, support, sustain, and enhance solutions of great societal value. Crucial systems quality attributes must include security, privacy, and reliability, while being worthy of trust. It is no longer good enough for academics to assert that they deliver graduates with knowledge of enduring value, or for businesspeople to say our employees have best college credentials. Our workforce must have and be able to effectively and ethically leverage and employ the knowledge, skills, abilities, behaviors, tools, technologies, supervision, leadership, and organizational culture needed to serve society, especially in times of overload and stress. This is only possible when all key stakeholders create a safe, healthy, and sustainable environment for excellent performance, continuous improvement, and respect for the contribution of all the incredibly diverse workers needed at every level.",
-	"If you think this field is all fun and games, it is",
-	"mental midgets",
-	"press the space bar with your toe",
-	"Whoaaa that's freaky!",
-	"i don't trust any institution; i trust individuals",
-	"i encourage you all to get good at python, just like chinese and spanish",
-	"some of you are going to find out how little this professor actually knows",
-	"one plus one is three for significantly large values of one",
-	"One day in India I was given a lovely silver coin",
-	"it's real easy to make children",
-	"I was just trying to get my golf stroke improved, and I click on this thing, and up comes this piece of porn!",
-	"Oh, finally, a human!",
-	"My flight is about to departing.",
-	"I’ll share my notes for you for $100",
-	"I'm not buying new tools for you",
-	"This elephant sniffs on you and…",
-	"Have you ever been blessed by an Indian Elephant?",
-	"How many counting programs do you think have been written?",
-	"Granddad I love you dearly, but I'm more interested in art",
-	"It's interesting how the brain says one thing and the fingers say something else",
-	"That's a stupid thing to say, miss!",
-];
-
-function wisdom() {
-	document.getElementById("lore").innerText = `"${lore[Math.floor(Math.random() * lore.length)]}" - Professor Lynn Robert Carter`;
-}
+    
+    const lore = [
+        "Some of the sexiest movies don't show any boobs or anything else",
+        "what's you or what's the computer... it's the future",
+        "Breathe in, breathe out.  You're gonna die!",
+        "We need to understand the pots of gold out there that maybe took some time and pain how to discover and how to leverage. And we need to recognize the black holes, and lets be very clear where the event horizon is, because once you cross over that line, there be dragons.",
+        "Great technology must deliver much more than just a tactical advantage in the marketplace. Society needs strategically sustainable, secure, and useful system solutions, worthy of trust, that typically depend upon a complex ecosystem of organizations and professionals. This ecosystem must be able to ethically design, develop, deliver, operate, support, sustain, and enhance solutions of great societal value. Crucial systems quality attributes must include security, privacy, and reliability, while being worthy of trust. It is no longer good enough for academics to assert that they deliver graduates with knowledge of enduring value, or for businesspeople to say our employees have best college credentials. Our workforce must have and be able to effectively and ethically leverage and employ the knowledge, skills, abilities, behaviors, tools, technologies, supervision, leadership, and organizational culture needed to serve society, especially in times of overload and stress. This is only possible when all key stakeholders create a safe, healthy, and sustainable environment for excellent performance, continuous improvement, and respect for the contribution of all the incredibly diverse workers needed at every level.",
+        "If you think this field is all fun and games, it is",
+        "mental midgets",
+        "press the space bar with your toe",
+        "Whoaaa that's freaky!",
+        "i don't trust any institution; i trust individuals",
+        "i encourage you all to get good at python, just like chinese and spanish",
+        "some of you are going to find out how little this professor actually knows",
+        "one plus one is three for significantly large values of one",
+        "One day in India I was given a lovely silver coin",
+        "it's real easy to make children",
+        "I was just trying to get my golf stroke improved, and I click on this thing, and up comes this piece of porn!",
+        "Oh, finally, a human!",
+        "My flight is about to departing.",
+        "I’ll share my notes for you for $100",
+        "I'm not buying new tools for you",
+        "This elephant sniffs on you and…",
+        "Have you ever been blessed by an Indian Elephant?",
+        "How many counting programs do you think have been written?",
+        "Granddad I love you dearly, but I'm more interested in art",
+        "It's interesting how the brain says one thing and the fingers say something else",
+        "That's a stupid thing to say, miss!",
+    ];
+    
+    //clone the array so it is less random.  This prevents people from seeing the same
+    //lore more than once while cycling through.
+    let less_random_lore = Array.from(lore);
+    
+    function reduce(index) {
+        less_random_lore.splice(index, 1);
+        if(less_random_lore.length === 0) {
+            less_random_lore = Array.from(lore);
+        }
+    }
+    
+    function wisdom() {
+        const random_element = Math.floor(Math.random() * less_random_lore.length);
+        document.getElementById("lore").innerText = `"${less_random_lore[random_element]}" - Professor Lynn Robert Carter`;
+        reduce(random_element);
+    }
 
 </script>
 <style>
-/*i forgot if its # or . for id*/
-#lore {
-	max-width: 35%;
-}
+    /*i forgot if its # or . for id*/
+    #lore {
+        max-width: 35%;
+    }
 
-.lore {
-	max-width: 35%;
-}
-
-@media screen and (max-width:1000px){
-	#lore {max-width: 90%;}
-	.lore {max-width: 90%;}
-}
+    .lore {
+        max-width: 35%;
+    }
+    
+    @media screen and (max-width:1000px){
+        #lore {
+            max-width: 90%;
+        }
+        .lore {
+            max-width: 90%;
+        }
+    }
 
 </style>
 </html>
