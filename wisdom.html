@@ -16,46 +16,28 @@
 <button onclick="wisdom()">Gain Wisdom</button>
 <br>
 <p id="lore"></p>
+<p>Have wisdom to share from the <b>Great Carter</b>? <a href="https://forms.gle/gDXp2MRxVNHKQmdw7">Share it here</a></p>
 </body>
 <script>
+    let all_lore = []
+    let less_random_lore = []
     
-    const lore = [
-        "Some of the sexiest movies don't show any boobs or anything else",
-        "what's you or what's the computer... it's the future",
-        "Breathe in, breathe out.  You're gonna die!",
-        "We need to understand the pots of gold out there that maybe took some time and pain how to discover and how to leverage. And we need to recognize the black holes, and lets be very clear where the event horizon is, because once you cross over that line, there be dragons.",
-        "Great technology must deliver much more than just a tactical advantage in the marketplace. Society needs strategically sustainable, secure, and useful system solutions, worthy of trust, that typically depend upon a complex ecosystem of organizations and professionals. This ecosystem must be able to ethically design, develop, deliver, operate, support, sustain, and enhance solutions of great societal value. Crucial systems quality attributes must include security, privacy, and reliability, while being worthy of trust. It is no longer good enough for academics to assert that they deliver graduates with knowledge of enduring value, or for businesspeople to say our employees have best college credentials. Our workforce must have and be able to effectively and ethically leverage and employ the knowledge, skills, abilities, behaviors, tools, technologies, supervision, leadership, and organizational culture needed to serve society, especially in times of overload and stress. This is only possible when all key stakeholders create a safe, healthy, and sustainable environment for excellent performance, continuous improvement, and respect for the contribution of all the incredibly diverse workers needed at every level.",
-        "If you think this field is all fun and games, it is",
-        "mental midgets",
-        "press the space bar with your toe",
-        "Whoaaa that's freaky!",
-        "i don't trust any institution; i trust individuals",
-        "i encourage you all to get good at python, just like chinese and spanish",
-        "some of you are going to find out how little this professor actually knows",
-        "one plus one is three for significantly large values of one",
-        "One day in India I was given a lovely silver coin",
-        "it's real easy to make children",
-        "I was just trying to get my golf stroke improved, and I click on this thing, and up comes this piece of porn!",
-        "Oh, finally, a human!",
-        "My flight is about to departing.",
-        "I’ll share my notes for you for $100",
-        "I'm not buying new tools for you",
-        "This elephant sniffs on you and…",
-        "Have you ever been blessed by an Indian Elephant?",
-        "How many counting programs do you think have been written?",
-        "Granddad I love you dearly, but I'm more interested in art",
-        "It's interesting how the brain says one thing and the fingers say something else",
-        "That's a stupid thing to say, miss!",
-    ];
-    
-    //clone the array so it is less random.  This prevents people from seeing the same
-    //lore more than once while cycling through.
-    let less_random_lore = Array.from(lore);
-    
+    fetch(
+        "https://sheets.googleapis.com/v4/spreadsheets/1LFj-olH2e_Ju5KK2IvNZ6cP7p2ygUIX0xD_qpe8bsUA/values/B2:B10000?key=AIzaSyAae6-k0pmXQK5XdJpuwRnCFhUBJ3qU_t4"
+    ).then((response) => response.json()
+    ).then((cells) => cells.values.map((v) => v[0])
+    ).then(lore => {
+        //clone the array so it is less random.  This prevents people from seeing the same
+        //lore more than once while cycling through.
+        all_lore = lore;
+        less_random_lore = Array.from(lore);
+    });
+
+
     function reduce(index) {
         less_random_lore.splice(index, 1);
         if(less_random_lore.length === 0) {
-            less_random_lore = Array.from(lore);
+            less_random_lore = Array.from(all_lore);
         }
     }
     
